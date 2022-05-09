@@ -1,0 +1,19 @@
+const main = async () => {
+  const domainContractFactory = await hre.ethers.getContractFactory("Domains");
+  const domainContract = await domainContractFactory.deploy("whale");
+  await domainContract.deployed();
+
+  console.log(`Contract deployed to: ${domainContract.address}`);
+};
+
+const runMain = async () => {
+  try {
+    await main();
+    process.exit(0);
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
+};
+
+runMain();
